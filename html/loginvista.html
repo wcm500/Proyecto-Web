@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title></title> 
+	<title></title>
 	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/estilosLogin.css">
-    
-        
-    <title>Mercado Virtual CR</title>
+
+
+    <title> Mercado Virtual CR</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
@@ -24,32 +24,32 @@
       .carousel {
         height: 60vh;
       }
-  
-      @media (max-width: 740px) {
-  
-        html,
-        body,
-        header,
-        .carousel {
-          height: 100vh;
-        }
-      }
-  
-      @media (min-width: 800px) and (max-width: 850px) {
-  
-        html,
-        body,
-        header,
-        .carousel {
-          height: 100vh;
-        }
-      }
-  
-    </style>
-	
-	
 
-</head>  
+      @media (max-width: 740px) {
+
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+
+      @media (min-width: 800px) and (max-width: 850px) {
+
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+
+    </style>
+
+
+
+</head>
 
 <!---Formulario para inciar session el usuario, con los diferentes roles.-->
 <body>
@@ -60,7 +60,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" target="_blank">
-        <strong class="blue-text">Mercado Virtual CR</strong>
+        <strong class="blue-text"><img src="../img/costa-rica.png" width="50" height="50"> Mercado Virtual CR</strong>
       </a>
 
       <!-- Collapse -->
@@ -91,7 +91,7 @@
             <a class="nav-link waves-effect" href="registrarvista.html"
               >Registrarse</a>
           </li>
-          
+
         </ul>
 
         <!-- Right -->
@@ -113,7 +113,7 @@
               <i class="fab fa-twitter"></i>
             </a>
           </li>
-          
+
           </li>
         </ul>
 
@@ -125,30 +125,38 @@
 
 
     <form class="formulario">
-    
+
+    <div class="text-center">
+	<span><img src="../img/costa-rica.png" width="70" height="70"> <h1>Mercado Virtual CR</h1> </span>
+</div>
+
+<br></br>
     <h1>Login</h1>
      <div class="contenedor">
-     
-     
-         
+
+
+
          <div class="input-contenedor">
          <i class="fas fa-envelope icon"></i>
          <input type="text" id = "correo" placeholder="Correo Electronico">
-         
+
          </div>
-         
+
          <div class="input-contenedor">
         <i class="fas fa-key icon"></i>
          <input type="password" id = "contrasena" placeholder="Contraseña" >
-         
+
          </div>
          <input type="button" id ="inicio" value="Login" class="button" onclick = "javascript:location.href='home-page.html'">
+
+<br></br>
+
          <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
          <p>¿No tienes una cuenta? <a class="link" href="../html/registrarvista.html">Registrate </a></p>
      </div>
      <script> src = "../js/jquery-3.2.1.js"</script>
-     
-    
+
+
     </form>
 
 
@@ -160,62 +168,62 @@
             role="button">Eres una PYME y quieres publicarte? Escribenos
             <i class="fas fa- ml-2"></i>
           </a>
-         
+
         </div>
         <!--/.Call to action-->
-    
+
         <hr class="my-4">
-    
+
         <!-- Social icons -->
         <div class="pb-4">
           <a href="#" target="_blank">
             <i class="fab fa-facebook-f mr-3"></i>
           </a>
-    
+
           <a href="#" target="_blank">
             <i class="fab fa-twitter mr-3"></i>
           </a>
-    
+
           <a href="#" target="_blank">
             <i class="fab fa-youtube mr-3"></i>
           </a>
-    
+
           <a href="#" target="_blank">
             <i class="fab fa-google-plus-g mr-3"></i>
           </a>
-    
+
           <a href="#" target="_blank">
             <i class="fab fa-dribbble mr-3"></i>
           </a>
-    
+
           <a href="#" target="_blank">
             <i class="fab fa-pinterest mr-3"></i>
           </a>
-    
+
           <a href="#" target="_blank">
             <i class="fab fa-github mr-3"></i>
           </a>
-    
+
           <a href="#" target="_blank">
             <i class="fab fa-codepen mr-3"></i>
           </a>
         </div>
         <!-- Social icons -->
-    
+
         <!--Copyright-->
         <div class="footer-copyright py-3">
           © 2020 Copyright:
           <a href="#" target="_blank"> </a>
         </div>
         <!--/.Copyright-->
-    
+
       </footer>
 
     <!--Este metodo sirve para los ingresar los diferntes usuarios al sistema
                 y valir el login mediante lo ingresado en las cajas de texto-->
     <script>
-         
-    
+
+
         var fallos = 0;
 
         function login(){
@@ -229,14 +237,14 @@
                 window.open("../html/paneldeControlJefe","_self");
             }
             else{
-                
+
                 fallos ++;
                 alert ("Incorrecto no existe este usuario " + "ha fallado: " + fallos);
             }
         }
 
 
-    
+
 
         </script>
 </body>

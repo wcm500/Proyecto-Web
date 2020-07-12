@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="../css/estilos.css">
+    
+
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/script.js"></script>
+
+  
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../css/style.min.css" rel="stylesheet">
+    <style type="text/css">
+      html,
+      body,
+      header,
+      .carousel {
+        height: 60vh;
+      }
+  
+      @media (max-width: 740px) {
+  
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+  
+      @media (min-width: 800px) and (max-width: 850px) {
+  
+        html,
+        body,
+        header,
+        .carousel {
+          height: 100vh;
+        }
+      }
+  
+    </style>
+</head>
+<body>
+
+   <!-- Navbar -->
+   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" target="_blank">
+        <strong class="blue-text">Mercado Virtual CR</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="home-page.html">Pagina Principal
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="" target="_blank">Sobre Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="PymesAsociadas.html"
+              >PYMES Asociadas</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="registrarvista.html"
+              >Registrarse</a>
+          </li>
+          
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> 0 </span>
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Carrito </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link waves-effect" >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/" class="nav-link waves-effect" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+
+  <section class="form_wrap">
+    <!---Este formulario permite enviar solicitudes a los compradores, llenando con nombre
+           departamento, correo, telefono y el mensaje que desean enviar-->
+            <section class="cantact_info">
+                <section class="info_title">
+                    <span class="fa fa-user-circle"></span>
+                    <h2>INFORMACIÓN<br>DE CONTACTO</h2>
+                </section>
+                <section class="info_items">
+                    <p><span class="fa fa-envelope"></span> info.mercadoVirtualCR@gmail.com</p>
+                    <p><span class="fa fa-mobile"></span> +506 72128217</p>
+                </section>
+            </section>
+    
+            <form action="" method="" class="form_contact">
+                <h2>Formulario PYMES</h2>
+                <div class="user_info">
+                    <label for="names">Nombres Empresario *</label>
+                    <input type="text" id="names" name="nombre" required>
+                    <br>
+                    <label for="names">Nombre Empresa *</label>
+                    <input type="text" id="empresa" name="nombre" required>
+    
+                    <label for="phone">Telefono / Celular</label>
+                    <input type="text" id="phone" name="telefono">
+    
+                    <label for="email">Correo electronico *</label>
+                    <input type="text" id="email" name="correo" required>
+    
+                    <label for="departamento">Categoria*</label>
+                    <input type="text" id="departamento" name="departamento" required>
+    
+                    <label for="mensaje">Descripción *</label> 
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+
+                    <label for="mensaje">Dirrección*</label> 
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+
+                    
+
+                    <label for="names">Facebook(Opcional)</label>
+                    <input type="text" id="names" name="nombre">
+    
+                    <input  type="button" value="Enviar Mensaje" id="btnSend"><a style="color: #ffffff;" href="enviarMensaje.html"></a>
+                    
+                </div>
+            </form>
+    
+        </section>
+
+        <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+          <!--Call to action-->
+          <div class="pt-4">
+            <a class="btn btn-outline-white" href="#" target="_blank"
+              role="button">Mercado Virtual CR
+              <i class="fas fa- ml-2"></i>
+            </a>
+           
+          </div>
+          <!--/.Call to action-->
+      
+          <hr class="my-4">
+      
+          <!-- Social icons -->
+          <div class="pb-4">
+            <a href="#" target="_blank">
+              <i class="fab fa-facebook-f mr-3"></i>
+            </a>
+      
+            <a href="#" target="_blank">
+              <i class="fab fa-twitter mr-3"></i>
+            </a>
+      
+            <a href="#" target="_blank">
+              <i class="fab fa-youtube mr-3"></i>
+            </a>
+      
+            <a href="#" target="_blank">
+              <i class="fab fa-google-plus-g mr-3"></i>
+            </a>
+      
+            <a href="#" target="_blank">
+              <i class="fab fa-dribbble mr-3"></i>
+            </a>
+      
+            <a href="#" target="_blank">
+              <i class="fab fa-pinterest mr-3"></i>
+            </a>
+      
+            <a href="#" target="_blank">
+              <i class="fab fa-github mr-3"></i>
+            </a>
+      
+            <a href="#" target="_blank">
+              <i class="fab fa-codepen mr-3"></i>
+            </a>
+          </div>
+          <!-- Social icons -->
+      
+          <!--Copyright-->
+          <div class="footer-copyright py-3">
+            © 2020 Copyright:
+            <a href="#" target="_blank"> </a>
+          </div>
+          <!--/.Copyright-->
+      
+        </footer>
+
+        
+
+
+
+
+ 
+</body>
+
+
+
+</html>

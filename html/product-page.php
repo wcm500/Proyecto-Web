@@ -1,28 +1,3 @@
-<?php
-
-try{
-  $user="root";
-  $pass="";
-  $server="localhost";
-  $db="mercadovirtualcr";
-  $con=mysqli_connect($server,$user,$pass);
-  mysqli_select_db($con,$db);
-  echo "<script>
-  alert('Conectado a la base de datos');
-</script>";
-
-
-
-
-}
-catch(MysqlException $e){
-  die("Eror al conectarse con Mysql ");
-}
-
-?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -119,6 +94,11 @@ catch(MysqlException $e){
   <!-- Navbar -->
 
   <!--Main layout-->
+  <?php
+            include ('conexion.php');
+            $resultado = $con->query("SELECT * FROM PRODUCTOS ORDER BY PRD_ID DESC") or die($con -> error);
+            while ($fila = mysqli_fetch_array($resultado)) {        
+            ?>
   <main class="mt-5 pt-4">
     <div class="container dark-grey-text mt-5">
 
@@ -128,7 +108,9 @@ catch(MysqlException $e){
         <!--Grid column-->
         <div class="col-md-6 mb-4">
 
-          <img src="../img/limpieza.jpg" class="img-fluid" alt="">
+        
+
+          <img src="../img/<?php $fila['PRD_IMAGEN'];?>" class="img-fluid" alt="">
 
         </div>
         <!--Grid column-->
@@ -138,12 +120,13 @@ catch(MysqlException $e){
 
           <!--Content-->
           <div class="p-4">
+          
 
 		  <h4 class="my-4 h4">Kit de limpieza</h4>
 
             <p class="lead">
               <span class="mr-1">
-                <del>$200</del>
+                <del><?php echo $fila['PRD_PRICE'];?></del>
               </span>
               <span>$100</span>
             </p>
@@ -160,21 +143,29 @@ catch(MysqlException $e){
               <button class="btn btn-primary btn-md my-0 p" type="submit">Agregar al carrito
                 <i class="fas fa-shopping-cart ml-1"></i>
               </button>
-
+              
+              
             </form>
+            
+            
 
           </div>
           <!--Content-->
 
         </div>
+        
         <!--Grid column-->
-
+       
+        
       </div>
       <!--Grid row-->
+      
 
       <hr>
+      <?php } ?>
 
       <!--Grid row-->
+      
       <div class="row d-flex justify-content-center wow fadeIn">
 
         <!--Grid column-->
@@ -191,6 +182,8 @@ catch(MysqlException $e){
 
       </div>
       <!--Grid row-->
+      
+      
 
       <!--Grid row-->
       <div class="row wow fadeIn">
@@ -218,14 +211,15 @@ catch(MysqlException $e){
 
         </div>
         <!--Grid column-->
-
+              
       </div>
       <!--Grid row-->
 
     </div>
+    
   </main>
   <!--Main layout-->
-
+  
   <!--Footer-->
   <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
@@ -252,6 +246,7 @@ catch(MysqlException $e){
       <a href="https://www.youtube.com/" target="_blank">
         <i class="fab fa-youtube mr-3"></i>
       </a>
+      
 
     </div>
     <!-- Social icons -->
@@ -262,7 +257,7 @@ catch(MysqlException $e){
 
     </div>
     <!--/.Copyright-->
-
+    
   </footer>
   <!--/.Footer-->
 
@@ -281,6 +276,7 @@ catch(MysqlException $e){
     new WOW().init();
 
   </script>
+  
 </body>
 
 </html>

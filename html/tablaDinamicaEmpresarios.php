@@ -37,11 +37,7 @@ $empr_age=$_POST['empr_age'];
 			
 			$resultados = mysqli_query($con, "SELECT * FROM empresarios WHERE EMPR_MAIL = '$empr_mail'");
 			while ($consulta = mysqli_fetch_array($resultados)) {
-				echo $consulta['empr_name']."<br>";
-				echo $consulta['empr_lastname']."<br>";
-				echo $consulta['empr_phone']."<br>";
-				echo $consulta['empr_mail']."<br>";
-				echo $consulta['empr_legalid']."<br>";
+				
 				
 				
 				
@@ -79,6 +75,7 @@ $empr_age=$_POST['empr_age'];
 
         
         $success    =   "Nuevo!";
+		header("Location: tablaDinamicaEmpresarios.php");
         
         
             }
@@ -100,15 +97,19 @@ $empr_age=$_POST['empr_age'];
 		$con=mysqli_connect($server,$user,$pass);
 		mysqli_select_db($con,$db);
 	
-		$empr_name = $_POST['empr_name'];
-        $empr_lastname = $_POST['empr_lastname'];
-        $empr_phone=$_POST['empr_phone'];
-        $empr_mail=$_POST['empr_mail'];
-        $empr_legalid=$_POST['empr_legalid'];
-        $empr_password=$_POST['empr_password'];
-        $empr_age=$_POST['empr_age'];
-        $EMPR_ID=$_POST['empr_id'];
+		$empr_name = $_POST['nombre'];
+        $empr_lastname = $_POST['apellido'];
+        $empr_phone =$_POST['telefono'];
+        $empr_mail =$_POST['correo'];
+        $empr_legalid =$_POST['cedula'];
+        $empr_password =$_POST['contrasena'];
+        $empr_age =$_POST['edad'];
+      
 	
+	
+
+			
+			
 		
 		if ($empr_name=="" || $empr_lastname=="" || $empr_phone=="" || $empr_mail=="" ||
         $empr_legalid==""  || $empr_password=="" || $empr_age=="") {
@@ -120,7 +121,7 @@ $empr_age=$_POST['empr_age'];
 	
 			$existe = 0;
 	
-			 $resultados = mysqli_query($con, "SELECT * FROM EMPRESARIOS WHERE EMPR_ID = '$empr_id'");
+			 $resultados = mysqli_query($con, "SELECT * FROM EMPRESARIOS WHERE EMPR_LEGALID = '$empr_legalid'");
 		while ($consulta = mysqli_fetch_array($resultados)) {
 	
 			$existe ++;
@@ -130,30 +131,22 @@ $empr_age=$_POST['empr_age'];
 			alert('el usuario no existe');
 		</script>";
 		}else{
-	
-			$_update_sql = "UPDATE empresarios SET 
-			`EMPR_ID` = '$EMPR_ID' ,
-			`EMPR_NAME`   = '$empr_name', 
 			
-			`EMPR_LASTNAME`  = '$empr_lastname',
-			`EMPR_PHONE`  = '$empr_phone', 
-			`EMPR_MAIL`  = '$empr_mail', 
-			`segundo_apellido_usuario`  = '$segundo_apellido', 
-			`EMPR_LEGALID`  = '$empr_legalid',
-            `EMPR_AGE`  = '$empr_age',
-            `EMPR_PASSWORD`  = '$empr_password'
-
 			
-			where EMPR_ID= '$empr_id'";
+			mysqli_query ($con, "UPDATE empresarios set EMPR_NAME = '$empr_name', EMPR_LASTNAME = '$empr_lastname',
+			EMPR_PHONE = '$empr_phone', EMPR_MAIL = '$empr_mail', EMPR_LEGALID = '$empr_legalid', EMPR_AGE = '$empr_age', EMPR_PASSWORD = '$empr_password' 
+			where EMPR_LEGALID = '$empr_legalid'")
+				or die ("Error al actualizar los datos");
+				
 	
-	
-	
-			mysqli_query($con,$_update_sql);
+			
+			
+			
 	
 			echo "<script>
 			alert('se ha actualizado los datos');
 		</script>";
-	
+		
 		}
 		  
 	
@@ -309,9 +302,9 @@ $empr_age=$_POST['empr_age'];
                         <th>Codigo Empresario</th>
 						<th>Nombre </th>
 						<th>Apellido</th>
-						<th>Teñefono</th>
+						<th>Telefono</th>
                         <th>Correo</th>
-						<th>Legalidad</th>
+						<th>Cedula</th>
                         <th>Edad</th>
                         <th>Contraseña</th>
                     </tr>
@@ -378,33 +371,33 @@ $empr_age=$_POST['empr_age'];
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Nombre</label>
-							<input type="text" class="form-control" name="empr_name" placeholder="Enter nombre" required>
+							<input type="text" class="form-control" name="empr_name" placeholder="Introduzca nombre" required>
                         </div>
                         
                         <div class="form-group">
 							<label>Apellido</label>
-							<input type="text" class="form-control" name="empr_lastname" placeholder="Enter nombre" required>
+							<input type="text" class="form-control" name="empr_lastname" placeholder="Introduzca apellido" required>
                         </div>
                         <div class="form-group">
 							<label>Telefono</label>
-							<input type="text" class="form-control" name="empr_phone" placeholder="Enter nombre" required>
+							<input type="text" class="form-control" name="empr_phone" placeholder="Introduzca telefono" required>
 						</div>
 						<div class="form-group">
 							<label>Correo</label>
-							<input type="email" class="form-control" name="empr_mail" placeholder="Enter correo" required>
+							<input type="email" class="form-control" name="empr_mail" placeholder="Introduzca correo" required>
 						</div>
 						<div class="form-group">
-							<label>Legalidad</label>
-							<textarea class="form-control" name="empr_legalid" placeholder="Enter primer apellido" required></textarea>
+							<label>Cédula</label>
+							<input class="form-control" name="empr_legalid" placeholder="Introduzca cédula" required></textarea>
 						</div>
 						<div class="form-group">
 							<label>Edad</label>
-							<input type="text" class="form-control" name="empr_age" placeholder="Enter segundo apellido" required>
-						</div>		
+							<input type="text" class="form-control" name="empr_age" placeholder="Introduzca edad" required>
+							</div>		
 						
 						<div class="form-group">
 							<label>Contraseña</label>
-							<input type="text" class="form-control" name="empr_password" placeholder="Enter cedula" required>
+							<input type="text" class="form-control" name="empr_password" placeholder="Introduzca contraseña" required>
 						</div>	
 									
 					</div>
@@ -428,32 +421,35 @@ $empr_age=$_POST['empr_age'];
 					<div class="modal-body">
 					<div class="form-group">
 							<label>Nombre</label>
-							<input type="text" class="form-control" name="Nombre" placeholder="Enter nombre" required>
-						</div>
-						<div class="form-group">
-							<label>Correo</label>
-							<input type="email" class="form-control" name="correo" placeholder="Enter correo" required>
+							<input type="text" class="form-control" name="nombre" placeholder="Enter nombre" required>
 						</div>
 						<div class="form-group">
 							<label>Primer Apellido</label>
-							<textarea class="form-control" name="apellido" placeholder="Enter primer apellido" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Segundo Apellido</label>
-							<input type="text" class="form-control" name="apellido2" placeholder="Enter segundo apellido" required>
-						</div>		
+							<input class="form-control" name="apellido" placeholder="Enter primer apellido" required></textarea>
+						</div>	
+						
 						<div class="form-group">
 							<label>Telefono</label>
 							<input type="text" class="form-control" name="telefono" placeholder="Enter telefono" required>
 						</div>	
+						
+					<div class="form-group">
+							<label>Correo</label>
+							<input type="email" class="form-control" name="correo" placeholder="Enter correo" required>
+						</div>
 						<div class="form-group">
 							<label>Cedula</label>
 							<input type="text" class="form-control" name="cedula" placeholder="Enter cedula" required>
-						</div>	
+						</div>
+						<div class="form-group">
+							<label>Edad</label>
+							<input type="text" class="form-control" name="edad" placeholder="Enter edad" required>
+						</div>							
 						<div class="form-group">
 							<label>Contraseña</label>
 							<input type="password" class="form-control" name="contrasena" placeholder="Enter contraseña" required>
-						</div>						
+						</div>
+												
 									
 					</div>
 					<div class="modal-footer">
@@ -468,7 +464,7 @@ $empr_age=$_POST['empr_age'];
 	<div id="deleteEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form method="post" action="index.php" >
+				<form method="post" action="eliminar_usuario.php" >
 					<div class="modal-header">						
 						<h4 class="modal-title">Eliminar Empleado</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

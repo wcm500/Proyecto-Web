@@ -2,7 +2,7 @@
    $user="root";
    $pass="";
    $server="localhost";
-   $db="pruebatarea";
+   $db="mercadovirtualcr";
    $con=mysqli_connect($server,$user,$pass);
    mysqli_select_db($con,$db);
 
@@ -38,7 +38,7 @@
             
                     $existe = 0;
             
-                     $resultados = mysqli_query($con, "SELECT * FROM USUARIO WHERE CEDULA_USUARIO = '$cedula'");
+                     $resultados = mysqli_query($con, "SELECT * FROM empresarios WHERE EMPR_LEGALID = '$cedula'");
                 while ($consulta = mysqli_fetch_array($resultados)) {
             
                     $existe ++;
@@ -50,13 +50,14 @@
             
                 }else{
             
-                    $_DELETE_SQL="DELETE FROM USUARIO  WHERE CEDULA_USUARIO = '$cedula'";
+                    $_DELETE_SQL="DELETE FROM empresarios  WHERE EMPR_LEGALID = '$cedula'";
             
             
                     mysqli_query($con,$_DELETE_SQL);
                     ECHO  "<script>
-                    alert('Eliminado de la tabla');
+                    alert('Eliminado de la tabla');					
                 </script>";
+				header("Location: tablaDinamicaEmpresarios.php");
                 
             
                 }

@@ -1,9 +1,7 @@
 <?php
 
-session_start();
-if(isset($_SESSION['carrito'])){
-  
-}
+
+include 'carritoLogica.php';
 
 ?>
 
@@ -103,6 +101,60 @@ if(isset($_SESSION['carrito'])){
   <!-- Navbar -->
 
   <!--Main layout-->
+    
+  <div style="clear:both"></div>
+      <br />
+      <hr>
+      <hr>
+      <hr>
+      <hr>
+      <hr>
+      <hr>
+			<h3>Detalle Ordenes</h3>
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<tr>
+						<th width="40%">Nombre de Producto</th>
+						<th width="10%">Cantidad</th>
+						<th width="20%">Precio</th>
+						<th width="15%">Total</th>
+						<th width="5%">Accion</th>
+					</tr>
+					<?php
+					if(!empty($_SESSION["shopping_cart"]))
+					{
+						$total = 0;
+						foreach($_SESSION["shopping_cart"] as $keys => $values)
+						{
+					?>
+					<tr>
+						<td><?php echo $values["item_name"]; ?></td>
+						<td><?php echo $values["item_quantity"]; ?></td>
+						<td>$ <?php echo $values["item_price"]; ?></td>
+						<td>$ <?php echo number_format($values["item_quantity"] * $values["item_price"], 2);?></td>
+						<td><a href="product-page.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="text-danger">Eliminar</span></a></td>
+					</tr>
+					<?php
+							$total = $total + ($values["item_quantity"] * $values["item_price"]);
+						}
+					?>
+					<tr>
+						<td colspan="3" align="right">Total</td>
+						<td align="right">$ <?php echo number_format($total, 2); ?></td>
+						<td></td>
+					</tr>
+					<?php
+					}
+					?>
+						
+				</table>
+
+				
+			</div>
+		</div>
+	</div>
+
+
   <main class="mt-5 pt-4">
     <div class="container wow fadeIn">
 
@@ -246,28 +298,23 @@ if(isset($_SESSION['carrito'])){
           </h4>
 
           <!-- Cart -->
+          <?php
+              if(isset($_SESSION['carrito'])){
+                $arregloCarrito=$_SESSION['carrito'];
+                for($i = 0; $i<count($arregloCarrito); $i++){
+
+               
+
+           ?>
           <ul class="list-group mb-3 z-depth-1">
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
-                <h6 class="my-0">Nombre Producto</h6>
+                <h6 class="my-0"><?php echo $arregloCarrito[$i]['Nombre']; ?></h6>
                 <small class="text-muted">Descripción Breve</small>
               </div>
-              <span class="text-muted">$12</span>
+              <span class="text-muted">$ <?php echo $arregloCarrito[$i]['Precio']; ?></span>
             </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Segundo Producto</h6>
-                <small class="text-muted">Descripción Breve</small>
-              </div>
-              <span class="text-muted">$8</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Tercer Producto</h6>
-                <small class="text-muted">Descripción Breve</small>
-              </div>
-              <span class="text-muted">$5</span>
-            </li>
+            
             <li class="list-group-item d-flex justify-content-between bg-light">
               <div class="text-success">
                 <h6 class="my-0">Código de promoción</h6>
@@ -276,10 +323,14 @@ if(isset($_SESSION['carrito'])){
               <span class="text-success">-$5</span>
             </li>
             <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
-              <strong>$20</strong>
+              <span>Total (USD) </span>
+              <strong>$<?php echo $arregloCarrito[$i]['Precio'];?></strong>
             </li>
+            
           </ul>
+
+          <?php  } }  ?>
+          
           <!-- Cart -->
 
           <!-- Promo code -->
@@ -290,9 +341,11 @@ if(isset($_SESSION['carrito'])){
                 <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Canjear</button>
               </div>
             </div>
+              
           </form>
+         
           <!-- Promo code -->
-
+          
         </div>
         <!--Grid column-->
 
@@ -300,6 +353,7 @@ if(isset($_SESSION['carrito'])){
       <!--Grid row-->
 
     </div>
+
   </main>
   <!--Main layout-->
 

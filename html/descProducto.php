@@ -1,8 +1,3 @@
-<?php
-
-include 'carritoLogica.php';
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +69,7 @@ include 'carritoLogica.php';
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
           <li class="nav-item">
-            <a class="nav-link waves-effect " href="checkout-page.php" >
+            <a class="nav-link waves-effect " href="checkout-page.html" >
               <span class="badge red z-depth-1 mr-1"> 0 </span>
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block"> Carrito </span>
@@ -99,15 +94,13 @@ include 'carritoLogica.php';
   <!-- Navbar -->
 
   <!--Main layout-->
-
-  
   <?php
             include ('conexion.php');
-            $resultado = $con->query("SELECT * FROM PRODUCTOS ORDER BY PRD_ID DESC") or die(mysql_error());
-            while ($fila = mysqli_fetch_array($resultado)) {        
+$resultado = $con->query("SELECT * FROM PRODUCTOS ORDER BY PRD_ID DESC where PRD_ID = 1") or die($con -> error);
+            while ($fila = mysqli_fetch_array($resultado)) {   
+                echo 'Ciclo';     
             ?>
   <main class="mt-5 pt-4">
-  <form method="post" action="product-page.php?action=add&id=<?php echo $fila["PRD_ID"]; ?>">
     <div class="container dark-grey-text mt-5">
 
       <!--Grid row-->
@@ -128,34 +121,39 @@ include 'carritoLogica.php';
 
           <!--Content-->
           <div class="p-4">
-
           
 
-		  <h4 class="my-4 h4"><?php echo $fila['PRD_NAME'];?></h4>
+		  <h4 class="my-4 h4">Kit de limpieza</h4>
 
             <p class="lead">
               <span class="mr-1">
-                $<?php echo $fila['PRD_PRICE'];?>
+                <del><?php echo $fila['PRD_PRICE'];?></del>
               </span>
-              
+              <span>$100</span>
             </p>
 
             <p class="lead font-weight-bold">Descripción</p>
 
-            <p> <?php echo $fila['PRD_DESC'];?></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
+              sint voluptatibus!
+              Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
 
             <form class="d-flex justify-content-left">
               <!-- Default input -->
-
-						<input type="hidden" name="hidden_name" value="<?php echo $fila["PRD_NAME"]; ?>" />
-
-						<input type="hidden" name="hidden_price" value="<?php echo $fila["PRD_PRICE"]; ?>" />
-          
+              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              <button class="btn btn-primary btn-md my-0 p" type="submit"><a style="color:white;"  href = "checkout-page.php?PRD_ID = <?php echo $fila['PRD_ID'];?>">Agregar al carrito</a>
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </button>
+              <br>
+              <button class="btn btn-primary btn-md my-0 p" type="submit"><a style="color:white;"  href = "product-page.php?PRD_ID = <?php echo $fila['PRD_ID'];?>">Ver mas productos</a>
+                
              
-              <input type="number" name="quantity" value="1" aria-label="Search" class="form-control" style="width: 100px">
-              <button class="btn btn-primary btn-md my-0 p" name="add_to_cart"  value="Add to Cart" type="submit">Agregar al carrito
-                <i class="fas fa-shopping-cart ml-1"></i>
-              </button>
+              
+              
+            </form>
+            
+            
+
           </div>
           <!--Content-->
 
@@ -169,65 +167,8 @@ include 'carritoLogica.php';
       
 
       <hr>
-
-      </form>
       <?php } ?>
-            </div>
 
-
-
-      <!--Grid row-->
-      
-      <div class="row d-flex justify-content-center wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-md-6 text-center">
-
-          <h4 class="my-4 h4">Próximamente en venta</h4>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-            voluptates,
-            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-      
-      
-
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <img src="../img/jabon.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="../img/aspiradora.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="../img/mascarilla.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-              
-      </div>
-      <!--Grid row-->
-
-    </div>
     
   </main>
   <!--Main layout-->
